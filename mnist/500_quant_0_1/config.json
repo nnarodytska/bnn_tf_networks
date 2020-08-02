@@ -1,0 +1,195 @@
+{
+    "cplex": {
+        "threads": 1
+    },
+    "data": {
+        "binarize": 1,
+        "channels": 1,
+        "data_dir": "./bench/mnist/",
+        "data_file": "",
+        "dataset": "mnist",
+        "donot_convert_data": false,
+        "input_size": 28,
+        "max_pixel": 2.82148653034729,
+        "mean_norm": 0.1307,
+        "min_pixel": -0.424212917883804,
+        "nb_channels": 1,
+        "num_classes": 10,
+        "test_size": 0.2,
+        "use_one_hot": true,
+        "var_norm": 0.3081
+    },
+    "id": "1",
+    "manual_seed": 0,
+    "model": {
+        "layers": [
+            500,
+            300,
+            200,
+            100,
+            10
+        ],
+        "layers_adapt": {
+            "200": [
+                200,
+                100,
+                100,
+                100,
+                10
+            ],
+            "500": [
+                500,
+                300,
+                200,
+                100,
+                10
+            ]
+        },
+        "model_setup": {
+            "bin": {
+                "binactivation_on": 0.1,
+                "binlinear_on": 0.1,
+                "mask_weight_on": 1,
+                "preepoch": 6,
+                "reg_lambda": [
+                    1,
+                    5e-06
+                ],
+                "relu_stable_on": 1,
+                "small_weight_on": 1
+            },
+            "id": "500",
+            "lin": {
+                "binactivation_on": 1,
+                "binlinear_on": 1,
+                "mask_weight_on": 1,
+                "preepoch": 0,
+                "reg_lambda": [
+                    1,
+                    5e-06
+                ],
+                "relu_stable_on": 1,
+                "small_weight_on": 1
+            },
+            "quant": {
+                "binactivation_on": 0.1,
+                "binlinear_on": 0.1,
+                "mask_weight_on": 1,
+                "preepoch": 6,
+                "reg_lambda": [
+                    1,
+                    3e-06
+                ],
+                "relu_stable_on": 1,
+                "small_weight_on": 0.1
+            },
+            "quant_stable": {
+                "binactivation_on": 0.1,
+                "binlinear_on": 0.1,
+                "mask_weight_on": 1,
+                "preepoch": 10,
+                "reg_lambda": [
+                    1,
+                    5e-06
+                ],
+                "relu_stable_on": 0.1,
+                "small_weight_on": 0.1
+            },
+            "reg": {
+                "binactivation_on": 0.1,
+                "binlinear_on": 0.1,
+                "mask_weight_on": 1,
+                "preepoch": 6,
+                "reg_lambda": [
+                    0.1,
+                    5e-06
+                ],
+                "relu_stable_on": 1,
+                "small_weight_on": 0.1
+            },
+            "reg_stable": {
+                "binactivation_on": 0.1,
+                "binlinear_on": 0.1,
+                "mask_weight_on": 1,
+                "preepoch": 10,
+                "reg_lambda": [
+                    0.1,
+                    5e-06
+                ],
+                "relu_stable_on": 0.1,
+                "small_weight_on": 0.1
+            },
+            "type": "quant",
+            "type_all": [
+                "lin",
+                "bin",
+                "reg",
+                "quant",
+                "reg_stable",
+                "quant_stable"
+            ]
+        },
+        "name": "mlp_binary_images",
+        "type": "cuda",
+        "type_model": "torch.cuda.FloatTensor"
+    },
+    "name": "mnist",
+    "save_dir": "../bnn_simple_verified_results/results_mnist/",
+    "train": {
+        "-------on/off--parts": "dummy",
+        "-------others --parts": "dummy",
+        "-------values --parts": "dummy",
+        "architecture": "nosplit_inputs",
+        "batch_size": 256,
+        "binactivation": 0,
+        "binactivation_on": 0.1,
+        "binlinear": 0,
+        "binlinear_on": 0.1,
+        "bits": 0,
+        "bits_on": 1,
+        "epochs": 50,
+        "gpus": 0,
+        "init_lb": -0.42421291788,
+        "init_ub": 2.82148653035,
+        "intinput": 0,
+        "l1_reg_adapt": {
+            "200": 5e-06,
+            "500": 3e-06
+        },
+        "loss": "CrossEntropyLoss",
+        "lr": 0.5,
+        "mask_fraction": 0.3,
+        "mask_weight": 0.0001,
+        "mask_weight_on": 1,
+        "momentum": 0.9,
+        "neuron_bits": 0,
+        "neuron_bits_on": 1,
+        "optimizer": "SGD",
+        "preepoch": 6,
+        "premodel": "../bnn_simple_verified_results/results_mnist/500_lin/checkpoint_epoch_50.pth.tar",
+        "print_freq": 2,
+        "reg_bits_on": 1,
+        "reg_k_bits": 0,
+        "reg_lambda": [
+            1,
+            3e-06
+        ],
+        "relu_stable": 0.003,
+        "relu_stable_adapt": {
+            "200": 0.003,
+            "500": 0.003
+        },
+        "relu_stable_on": 1,
+        "remove_last_bn": 0.1,
+        "small_weight": 0.04,
+        "small_weight_adapt": {
+            "200": 0.022,
+            "500": 0.04
+        },
+        "small_weight_on": 0.1,
+        "unused": 2.82148653035,
+        "use_bn_for_stability": 1,
+        "weight_decay": 0.0001,
+        "workers": 1
+    }
+}
