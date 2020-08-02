@@ -177,26 +177,17 @@ def load_model(args, config):
 
 if __name__ == '__main__':
     
-    parser = argparse.ArgumentParser(description='PyTorch ConvNet Training')
-    parser.add_argument('-c', '--config', default=None, type=str,    
-                            help='config file path (default: None)')
+    parser = argparse.ArgumentParser(description='BNNs loader')
     parser.add_argument('-l', '--load', default=None, type=str,
                             help='load stored model from a dir')
- 
-    parser.add_argument('--seed', default=None, type=int,
-                            help='')        
     args = parser.parse_args()
   
     if not (args.load is None):
         try:
             config = json.load(open(os.path.join(args.load, CONFIG_DEFAULT_FILE_NAME)))
-            if not (args.seed is None):
-                random.seed(args.seed)
-            else:
-                random.seed(config["manual_seed"])                
-            print(config)
+            random.seed(config["manual_seed"])                
         except Exception as e:
-            print("Error in reading {} from {}, error {}".format(args.config, args.load, e))
+            print("Error in reading {} from {}, error {}".format("config", args.load, e))
             exit()        
         load_model(args, config)
     else:
